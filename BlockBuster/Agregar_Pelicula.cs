@@ -50,6 +50,10 @@ namespace BlockBuster
 
             // Insertar película con las relaciones
             conexion.InsertarPelicula(nombre, fecha, duracion, idIdioma, idGenero, idEstatus, idActor, idDirector);
+
+            //muestra el formulario donde se lee la tabla pelicula
+            Visualizar_Peliculas forms2 = new Visualizar_Peliculas();
+            forms2.Show();
         }
 
         private void generoComboBox_SelectedIndexChanged(object sender, EventArgs e)

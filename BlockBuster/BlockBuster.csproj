@@ -71,6 +71,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sqlQuery.cs" />
+    <Compile Include="Visualizar_Peliculas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visualizar_Peliculas.Designer.cs">
+      <DependentUpon>Visualizar_Peliculas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Agregar_Pelicula.resx">
       <DependentUpon>Agregar_Pelicula.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +89,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Visualizar_Peliculas.resx">
+      <DependentUpon>Visualizar_Peliculas.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
