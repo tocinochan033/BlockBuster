@@ -25,7 +25,7 @@ namespace BlockBuster
 
         }
 
-        private databaseConnection database = new databaseConnection();
+        private sqlQuery database = new sqlQuery();
 
 
         private void CargarDatos()

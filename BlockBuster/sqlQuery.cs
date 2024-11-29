@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,52 @@ namespace BlockBuster
 {
     internal class sqlQuery
     {
-        databaseConnection database = new databaseConnection();
+        private databaseConnection database = new databaseConnection();
+
+
+        public DataTable ObtenerPeliculas()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                database.open();
+                string query = @"
+            SELECT 
+                p.titulo AS 'Título', 
+                p.fecha AS 'Fecha de Estreno', 
+                p.duracion_min AS 'Duración (minutos)',
+                a.nombre + ' ' + a.apellido AS 'Actor',
+                d.nombre + ' ' + d.apellido AS 'Director',
+                g.genero AS 'Género',
+                i.idioma AS 'Idioma',
+                e.estatus AS 'Estatus'
+            FROM pelicula p
+            INNER JOIN actor a ON p.id_actor = a.id_actor
+            INNER JOIN director d ON p.id_director = d.id_director
+            INNER JOIN genero g ON p.id_genero = g.id_genero
+            INNER JOIN idioma i ON p.id_idioma = i.id_idioma
+            INNER JOIN estatus e ON p.id_estatus = e.id_estatus";
+
+                using (SqlCommand command = new SqlCommand(query, database.connectiondb))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener datos: " + ex.Message);
+            }
+            finally
+            {
+                database.close();
+            }
+
+            return dataTable;
+        }
+
         public int InsertarActor(string nombre, string apellido)
         {
             int idActor = 0;
