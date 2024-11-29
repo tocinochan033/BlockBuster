@@ -13,6 +13,7 @@ namespace BlockBuster
     public partial class Agregar_Pelicula : Form
     {
         databaseConnection conexion = new databaseConnection();
+        sqlQuery query = new sqlQuery();
         public Agregar_Pelicula()
         {
             InitializeComponent();
@@ -42,14 +43,14 @@ namespace BlockBuster
             string estatus = estatusComboBox.SelectedItem.ToString();
 
             // Insertar actor, director, género, idioma y estatus
-            int idActor = conexion.InsertarActor(nombreActor, apellidoActor);
-            int idDirector = conexion.InsertarDirector(nombreDirector, apellidoDirector);
-            int idGenero = conexion.InsertarGenero(genero);
-            int idIdioma = conexion.InsertarIdioma(idioma);
-            int idEstatus = conexion.InsertarEstatus(estatus);
+            int idActor = query.InsertarActor(nombreActor, apellidoActor);
+            int idDirector = query.InsertarDirector(nombreDirector, apellidoDirector);
+            int idGenero = query.InsertarGenero(genero);
+            int idIdioma = query.InsertarIdioma(idioma);
+            int idEstatus = query.InsertarEstatus(estatus);
 
             // Insertar película con las relaciones
-            conexion.InsertarPelicula(nombre, fecha, duracion, idIdioma, idGenero, idEstatus, idActor, idDirector);
+            query.InsertarPelicula(nombre, fecha, duracion, idIdioma, idGenero, idEstatus, idActor, idDirector);
 
             //muestra el formulario donde se lee la tabla pelicula
             Visualizar_Peliculas forms2 = new Visualizar_Peliculas();
