@@ -13,7 +13,7 @@ namespace BlockBuster
         private databaseConnection database = new databaseConnection();
 
 
-        public DataTable ObtenerPeliculas()
+        public DataTable ObtenerPeliculasAmplio()
         {
             DataTable dataTable = new DataTable();
             try
@@ -34,6 +34,40 @@ namespace BlockBuster
             INNER JOIN director d ON p.id_director = d.id_director
             INNER JOIN genero g ON p.id_genero = g.id_genero
             INNER JOIN idioma i ON p.id_idioma = i.id_idioma
+            INNER JOIN estatus e ON p.id_estatus = e.id_estatus";
+
+                using (SqlCommand command = new SqlCommand(query, database.connectiondb))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener datos: " + ex.Message);
+            }
+            finally
+            {
+                database.close();
+            }
+
+            return dataTable;
+        }
+
+        public DataTable ObtenerPeliculasMenor()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                database.open();
+                string query = @"
+            SELECT 
+                p.id_pelicula AS 'Identificador',
+                p.titulo AS 'Título',  
+                e.estatus AS 'Estatus'
+            FROM pelicula p
             INNER JOIN estatus e ON p.id_estatus = e.id_estatus";
 
                 using (SqlCommand command = new SqlCommand(query, database.connectiondb))

@@ -25,14 +25,14 @@ namespace BlockBuster
 
         }
 
-        private sqlQuery database = new sqlQuery();
+        private sqlQuery query = new sqlQuery();
 
 
         private void CargarDatos()
         {
             try
             {
-                dataGridViewPeliculas.DataSource = database.ObtenerPeliculas();
+                dataGridViewPeliculas.DataSource = query.ObtenerPeliculasAmplio();
 
             }
             catch (Exception ex)
@@ -41,6 +41,10 @@ namespace BlockBuster
             }
         }
 
-
+        private void modificarButton_Click(object sender, EventArgs e)
+        {
+            Modificar modificar = new Modificar();
+            modificar.Show();
+        }
     }
 }
