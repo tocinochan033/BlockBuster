@@ -30,6 +30,7 @@ namespace BlockBuster
             try
             {
                 dataGridViewPeliculas.DataSource = query.ObtenerPeliculasMenor();
+                dataGridViewPeliculas.Columns["Identificador"].Visible = false;
 
             }
             catch (Exception ex)
@@ -45,7 +46,7 @@ namespace BlockBuster
                 try
                 {
                     // Obtén el ID de la película seleccionada
-                    int idPelicula = Convert.ToInt32(dataGridViewPeliculas.SelectedRows[0].Cells["id_pelicula"].Value);
+                    int idPelicula = Convert.ToInt32(dataGridViewPeliculas.SelectedRows[0].Cells["Identificador"].Value);
 
                     // Obtén el nuevo estatus seleccionado del ComboBox
                     string nuevoEstatus = estatusComboBox.SelectedItem?.ToString();
@@ -60,7 +61,10 @@ namespace BlockBuster
                     using (SqlConnection connection = new SqlConnection("Data Source= MARTIN\\SQLEXPRESS; Initial Catalog= COCKBUSTERS; Integrated Security=True"))
                     {
                         connection.Open();
-                        string query = "UPDATE pelicula SET id_estatus = (SELECT id_estatus FROM estatus WHERE estatus = @NuevoEstatus) WHERE id_pelicula = @IdPelicula";
+                        string query = @"
+                        UPDATE pelicula 
+                        SET id_estatus = (SELECT TOP 1 id_estatus FROM estatus WHERE estatus = @NuevoEstatus) 
+                        WHERE id_pelicula = @IdPelicula";
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
                             command.Parameters.AddWithValue("@NuevoEstatus", nuevoEstatus);

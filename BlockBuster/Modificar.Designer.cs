@@ -84,7 +84,7 @@
             this.eliminarButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.eliminarButton.Size = new System.Drawing.Size(112, 35);
             this.eliminarButton.TabIndex = 24;
-            this.eliminarButton.Text = "modificar";
+            this.eliminarButton.Text = "Eliminar\'";
             this.eliminarButton.UseVisualStyleBackColor = true;
             this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
             // 
