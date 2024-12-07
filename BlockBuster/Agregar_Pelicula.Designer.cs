@@ -32,10 +32,6 @@
             this.estatusComboBox = new System.Windows.Forms.ComboBox();
             this.idiomaComboBox = new System.Windows.Forms.ComboBox();
             this.generoComboBox = new System.Windows.Forms.ComboBox();
-            this.actorApellidoTextBox = new System.Windows.Forms.TextBox();
-            this.actorNombreTextBox = new System.Windows.Forms.TextBox();
-            this.apellidoDirectorTextBox = new System.Windows.Forms.TextBox();
-            this.nombreDirectorTextBox = new System.Windows.Forms.TextBox();
             this.fechaTextBox = new System.Windows.Forms.TextBox();
             this.duracionTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
@@ -48,6 +44,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.agregarButton = new System.Windows.Forms.Button();
+            this.actorNombreTextBox = new System.Windows.Forms.TextBox();
+            this.actorApellidoTextBox = new System.Windows.Forms.TextBox();
+            this.nombreDirectorTextBox = new System.Windows.Forms.TextBox();
+            this.apellidoDirectorTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,9 +82,6 @@
             // estatusComboBox
             // 
             this.estatusComboBox.FormattingEnabled = true;
-            this.estatusComboBox.Items.AddRange(new object[] {
-            "Disponible",
-            "Rentado"});
             this.estatusComboBox.Location = new System.Drawing.Point(321, 371);
             this.estatusComboBox.Name = "estatusComboBox";
             this.estatusComboBox.Size = new System.Drawing.Size(87, 24);
@@ -93,11 +90,6 @@
             // idiomaComboBox
             // 
             this.idiomaComboBox.FormattingEnabled = true;
-            this.idiomaComboBox.Items.AddRange(new object[] {
-            "Español",
-            "Ingles",
-            "Frances",
-            "Italiano"});
             this.idiomaComboBox.Location = new System.Drawing.Point(208, 371);
             this.idiomaComboBox.Name = "idiomaComboBox";
             this.idiomaComboBox.Size = new System.Drawing.Size(87, 24);
@@ -106,49 +98,11 @@
             // generoComboBox
             // 
             this.generoComboBox.FormattingEnabled = true;
-            this.generoComboBox.Items.AddRange(new object[] {
-            "Terror",
-            "Fantasia",
-            "Comedia",
-            "Drama",
-            "Suspenso"});
             this.generoComboBox.Location = new System.Drawing.Point(81, 371);
             this.generoComboBox.Name = "generoComboBox";
             this.generoComboBox.Size = new System.Drawing.Size(87, 24);
             this.generoComboBox.TabIndex = 16;
             this.generoComboBox.SelectedIndexChanged += new System.EventHandler(this.generoComboBox_SelectedIndexChanged);
-            // 
-            // actorApellidoTextBox
-            // 
-            this.actorApellidoTextBox.Location = new System.Drawing.Point(252, 260);
-            this.actorApellidoTextBox.Name = "actorApellidoTextBox";
-            this.actorApellidoTextBox.Size = new System.Drawing.Size(166, 22);
-            this.actorApellidoTextBox.TabIndex = 15;
-            this.actorApellidoTextBox.Text = "apellido";
-            // 
-            // actorNombreTextBox
-            // 
-            this.actorNombreTextBox.Location = new System.Drawing.Point(80, 262);
-            this.actorNombreTextBox.Name = "actorNombreTextBox";
-            this.actorNombreTextBox.Size = new System.Drawing.Size(166, 22);
-            this.actorNombreTextBox.TabIndex = 14;
-            this.actorNombreTextBox.Text = "nombre";
-            // 
-            // apellidoDirectorTextBox
-            // 
-            this.apellidoDirectorTextBox.Location = new System.Drawing.Point(273, 203);
-            this.apellidoDirectorTextBox.Name = "apellidoDirectorTextBox";
-            this.apellidoDirectorTextBox.Size = new System.Drawing.Size(166, 22);
-            this.apellidoDirectorTextBox.TabIndex = 13;
-            this.apellidoDirectorTextBox.Text = "apellido";
-            // 
-            // nombreDirectorTextBox
-            // 
-            this.nombreDirectorTextBox.Location = new System.Drawing.Point(101, 205);
-            this.nombreDirectorTextBox.Name = "nombreDirectorTextBox";
-            this.nombreDirectorTextBox.Size = new System.Drawing.Size(166, 22);
-            this.nombreDirectorTextBox.TabIndex = 12;
-            this.nombreDirectorTextBox.Text = "nombre";
             // 
             // fechaTextBox
             // 
@@ -261,6 +215,38 @@
             this.agregarButton.UseVisualStyleBackColor = true;
             this.agregarButton.Click += new System.EventHandler(this.agregarButton_Click);
             // 
+            // actorNombreTextBox
+            // 
+            this.actorNombreTextBox.Location = new System.Drawing.Point(80, 262);
+            this.actorNombreTextBox.Name = "actorNombreTextBox";
+            this.actorNombreTextBox.Size = new System.Drawing.Size(166, 22);
+            this.actorNombreTextBox.TabIndex = 14;
+            this.actorNombreTextBox.Text = "nombre";
+            // 
+            // actorApellidoTextBox
+            // 
+            this.actorApellidoTextBox.Location = new System.Drawing.Point(252, 260);
+            this.actorApellidoTextBox.Name = "actorApellidoTextBox";
+            this.actorApellidoTextBox.Size = new System.Drawing.Size(166, 22);
+            this.actorApellidoTextBox.TabIndex = 15;
+            this.actorApellidoTextBox.Text = "apellido";
+            // 
+            // nombreDirectorTextBox
+            // 
+            this.nombreDirectorTextBox.Location = new System.Drawing.Point(101, 205);
+            this.nombreDirectorTextBox.Name = "nombreDirectorTextBox";
+            this.nombreDirectorTextBox.Size = new System.Drawing.Size(166, 22);
+            this.nombreDirectorTextBox.TabIndex = 12;
+            this.nombreDirectorTextBox.Text = "nombre";
+            // 
+            // apellidoDirectorTextBox
+            // 
+            this.apellidoDirectorTextBox.Location = new System.Drawing.Point(273, 203);
+            this.apellidoDirectorTextBox.Name = "apellidoDirectorTextBox";
+            this.apellidoDirectorTextBox.Size = new System.Drawing.Size(166, 22);
+            this.apellidoDirectorTextBox.TabIndex = 13;
+            this.apellidoDirectorTextBox.Text = "apellido";
+            // 
             // Agregar_Pelicula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -288,16 +274,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button agregarButton;
-        private System.Windows.Forms.TextBox actorApellidoTextBox;
-        private System.Windows.Forms.TextBox actorNombreTextBox;
-        private System.Windows.Forms.TextBox apellidoDirectorTextBox;
-        private System.Windows.Forms.TextBox nombreDirectorTextBox;
         private System.Windows.Forms.TextBox fechaTextBox;
         private System.Windows.Forms.TextBox duracionTextBox;
         private System.Windows.Forms.TextBox nombreTextBox;
         private System.Windows.Forms.ComboBox estatusComboBox;
         private System.Windows.Forms.ComboBox idiomaComboBox;
         private System.Windows.Forms.ComboBox generoComboBox;
+        private System.Windows.Forms.TextBox actorApellidoTextBox;
+        private System.Windows.Forms.TextBox actorNombreTextBox;
+        private System.Windows.Forms.TextBox apellidoDirectorTextBox;
+        private System.Windows.Forms.TextBox nombreDirectorTextBox;
     }
 }
 

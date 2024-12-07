@@ -68,6 +68,7 @@
     <Compile Include="Agregar_Pelicula.Designer.cs">
       <DependentUpon>Agregar_Pelicula.cs</DependentUpon>
     </Compile>
+    <Compile Include="IDHelper.cs" />
     <Compile Include="Modificar.cs">
       <SubType>Form</SubType>
     </Compile>

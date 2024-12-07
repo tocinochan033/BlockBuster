@@ -37,5 +37,9 @@ namespace BlockBuster
             connectiondb.Close();
         }
 
+        public SqlConnection getConnection()
+        {
+            return connectiondb;
+        }
     }
 }
