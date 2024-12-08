@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.actorComboBox = new System.Windows.Forms.ComboBox();
+            this.directorComboBox = new System.Windows.Forms.ComboBox();
             this.estatusComboBox = new System.Windows.Forms.ComboBox();
             this.idiomaComboBox = new System.Windows.Forms.ComboBox();
             this.generoComboBox = new System.Windows.Forms.ComboBox();
@@ -44,22 +46,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.agregarButton = new System.Windows.Forms.Button();
-            this.actorNombreTextBox = new System.Windows.Forms.TextBox();
-            this.actorApellidoTextBox = new System.Windows.Forms.TextBox();
-            this.nombreDirectorTextBox = new System.Windows.Forms.TextBox();
-            this.apellidoDirectorTextBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.actorComboBox);
+            this.groupBox1.Controls.Add(this.directorComboBox);
             this.groupBox1.Controls.Add(this.estatusComboBox);
             this.groupBox1.Controls.Add(this.idiomaComboBox);
             this.groupBox1.Controls.Add(this.generoComboBox);
-            this.groupBox1.Controls.Add(this.actorApellidoTextBox);
-            this.groupBox1.Controls.Add(this.actorNombreTextBox);
-            this.groupBox1.Controls.Add(this.apellidoDirectorTextBox);
-            this.groupBox1.Controls.Add(this.nombreDirectorTextBox);
             this.groupBox1.Controls.Add(this.fechaTextBox);
             this.groupBox1.Controls.Add(this.duracionTextBox);
             this.groupBox1.Controls.Add(this.nombreTextBox);
@@ -78,6 +78,23 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // actorComboBox
+            // 
+            this.actorComboBox.FormattingEnabled = true;
+            this.actorComboBox.Location = new System.Drawing.Point(110, 258);
+            this.actorComboBox.Name = "actorComboBox";
+            this.actorComboBox.Size = new System.Drawing.Size(298, 24);
+            this.actorComboBox.TabIndex = 20;
+            // 
+            // directorComboBox
+            // 
+            this.directorComboBox.FormattingEnabled = true;
+            this.directorComboBox.Location = new System.Drawing.Point(110, 201);
+            this.directorComboBox.Name = "directorComboBox";
+            this.directorComboBox.Size = new System.Drawing.Size(298, 24);
+            this.directorComboBox.TabIndex = 19;
+            this.directorComboBox.SelectedIndexChanged += new System.EventHandler(this.directorComboBox_SelectedIndexChanged);
             // 
             // estatusComboBox
             // 
@@ -215,37 +232,25 @@
             this.agregarButton.UseVisualStyleBackColor = true;
             this.agregarButton.Click += new System.EventHandler(this.agregarButton_Click);
             // 
-            // actorNombreTextBox
+            // button1
             // 
-            this.actorNombreTextBox.Location = new System.Drawing.Point(80, 262);
-            this.actorNombreTextBox.Name = "actorNombreTextBox";
-            this.actorNombreTextBox.Size = new System.Drawing.Size(166, 22);
-            this.actorNombreTextBox.TabIndex = 14;
-            this.actorNombreTextBox.Text = "nombre";
+            this.button1.Location = new System.Drawing.Point(414, 192);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 40);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Nuevo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // actorApellidoTextBox
+            // button2
             // 
-            this.actorApellidoTextBox.Location = new System.Drawing.Point(252, 260);
-            this.actorApellidoTextBox.Name = "actorApellidoTextBox";
-            this.actorApellidoTextBox.Size = new System.Drawing.Size(166, 22);
-            this.actorApellidoTextBox.TabIndex = 15;
-            this.actorApellidoTextBox.Text = "apellido";
-            // 
-            // nombreDirectorTextBox
-            // 
-            this.nombreDirectorTextBox.Location = new System.Drawing.Point(101, 205);
-            this.nombreDirectorTextBox.Name = "nombreDirectorTextBox";
-            this.nombreDirectorTextBox.Size = new System.Drawing.Size(166, 22);
-            this.nombreDirectorTextBox.TabIndex = 12;
-            this.nombreDirectorTextBox.Text = "nombre";
-            // 
-            // apellidoDirectorTextBox
-            // 
-            this.apellidoDirectorTextBox.Location = new System.Drawing.Point(273, 203);
-            this.apellidoDirectorTextBox.Name = "apellidoDirectorTextBox";
-            this.apellidoDirectorTextBox.Size = new System.Drawing.Size(166, 22);
-            this.apellidoDirectorTextBox.TabIndex = 13;
-            this.apellidoDirectorTextBox.Text = "apellido";
+            this.button2.Location = new System.Drawing.Point(414, 249);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(116, 40);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Nuevo";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Agregar_Pelicula
             // 
@@ -280,10 +285,10 @@
         private System.Windows.Forms.ComboBox estatusComboBox;
         private System.Windows.Forms.ComboBox idiomaComboBox;
         private System.Windows.Forms.ComboBox generoComboBox;
-        private System.Windows.Forms.TextBox actorApellidoTextBox;
-        private System.Windows.Forms.TextBox actorNombreTextBox;
-        private System.Windows.Forms.TextBox apellidoDirectorTextBox;
-        private System.Windows.Forms.TextBox nombreDirectorTextBox;
+        private System.Windows.Forms.ComboBox actorComboBox;
+        private System.Windows.Forms.ComboBox directorComboBox;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -17,6 +17,7 @@ namespace BlockBuster
         {
             InitializeComponent();
             CargarDatos();
+            cargarEstatus();
         }
 
         private void Modificar_Load(object sender, EventArgs e)
@@ -37,6 +38,12 @@ namespace BlockBuster
             {
                 MessageBox.Show("Error al cargar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        Agregar_Pelicula estatus = new Agregar_Pelicula();
+        private void cargarEstatus()
+        {
+            estatus.LlenarComboBox(estatusComboBox, "SELECT estatus FROM estatus", "estatus");
         }
 
         private void button1_Click(object sender, EventArgs e)

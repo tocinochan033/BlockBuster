@@ -1,6 +1,6 @@
 ﻿namespace BlockBuster
 {
-    partial class Visualizar_Peliculas
+    partial class ListaPeliculasDisponibles
     {
         /// <summary>
         /// Required designer variable.
@@ -29,41 +29,28 @@
         private void InitializeComponent()
         {
             this.dataGridViewPeliculas = new System.Windows.Forms.DataGridView();
-            this.modificarButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPeliculas)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewPeliculas
             // 
             this.dataGridViewPeliculas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPeliculas.Location = new System.Drawing.Point(12, 50);
+            this.dataGridViewPeliculas.Location = new System.Drawing.Point(23, 22);
             this.dataGridViewPeliculas.Name = "dataGridViewPeliculas";
             this.dataGridViewPeliculas.RowHeadersWidth = 51;
             this.dataGridViewPeliculas.RowTemplate.Height = 24;
-            this.dataGridViewPeliculas.Size = new System.Drawing.Size(1131, 328);
+            this.dataGridViewPeliculas.Size = new System.Drawing.Size(740, 313);
             this.dataGridViewPeliculas.TabIndex = 0;
-            this.dataGridViewPeliculas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // modificarButton
-            // 
-            this.modificarButton.Location = new System.Drawing.Point(556, 398);
-            this.modificarButton.Name = "modificarButton";
-            this.modificarButton.Size = new System.Drawing.Size(108, 40);
-            this.modificarButton.TabIndex = 21;
-            this.modificarButton.Text = "modificar";
-            this.modificarButton.UseVisualStyleBackColor = true;
-            this.modificarButton.Click += new System.EventHandler(this.modificarButton_Click);
-            // 
-            // Visualizar_Peliculas
+            // ListaPeliculasDisponibles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 450);
-            this.Controls.Add(this.modificarButton);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataGridViewPeliculas);
-            this.Name = "Visualizar_Peliculas";
-            this.Text = "Visualizar_Peliculas";
-            this.Load += new System.EventHandler(this.Visualizar_Peliculas_Load);
+            this.Name = "ListaPeliculasDisponibles";
+            this.Text = "ListaPeliculasDisponibles";
+            this.Load += new System.EventHandler(this.ListaPeliculasDisponibles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPeliculas)).EndInit();
             this.ResumeLayout(false);
 
@@ -72,6 +59,5 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewPeliculas;
-        private System.Windows.Forms.Button modificarButton;
     }
 }

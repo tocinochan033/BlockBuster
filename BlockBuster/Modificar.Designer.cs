@@ -49,9 +49,6 @@
             // estatusComboBox
             // 
             this.estatusComboBox.FormattingEnabled = true;
-            this.estatusComboBox.Items.AddRange(new object[] {
-            "Disponible",
-            "Rentado"});
             this.estatusComboBox.Location = new System.Drawing.Point(284, 347);
             this.estatusComboBox.Name = "estatusComboBox";
             this.estatusComboBox.Size = new System.Drawing.Size(87, 24);

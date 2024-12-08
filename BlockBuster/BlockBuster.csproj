@@ -69,11 +69,29 @@
       <DependentUpon>Agregar_Pelicula.cs</DependentUpon>
     </Compile>
     <Compile Include="IDHelper.cs" />
+    <Compile Include="ListaPeliculasDisponibles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaPeliculasDisponibles.Designer.cs">
+      <DependentUpon>ListaPeliculasDisponibles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modificar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modificar.Designer.cs">
       <DependentUpon>Modificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NuevoActor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NuevoActor.Designer.cs">
+      <DependentUpon>NuevoActor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NuevoDirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NuevoDirector.Designer.cs">
+      <DependentUpon>NuevoDirector.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,8 +105,17 @@
     <EmbeddedResource Include="Agregar_Pelicula.resx">
       <DependentUpon>Agregar_Pelicula.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListaPeliculasDisponibles.resx">
+      <DependentUpon>ListaPeliculasDisponibles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modificar.resx">
       <DependentUpon>Modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NuevoActor.resx">
+      <DependentUpon>NuevoActor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NuevoDirector.resx">
+      <DependentUpon>NuevoDirector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
