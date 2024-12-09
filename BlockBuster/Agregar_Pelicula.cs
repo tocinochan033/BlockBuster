@@ -90,10 +90,7 @@ namespace BlockBuster
             query.InsertarPelicula(nombre, fecha, duracion, idIdioma, idGenero, idEstatus, idActor, idDirector);
 
             database.close();
-
-
-            Visualizar_Peliculas forms2 = new Visualizar_Peliculas();
-            forms2.Show();
+            this.Close();
         }
 
         public void LlenarComboBox(ComboBox comboBox, string query, string displayField)

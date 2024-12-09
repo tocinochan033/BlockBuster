@@ -16,7 +16,7 @@ namespace BlockBuster
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ListaPeliculasDisponibles());
+            Application.Run(new Visualizar_Peliculas());
         }
     }
 }

@@ -66,6 +66,7 @@
             this.Controls.Add(this.nombreTextBox);
             this.Controls.Add(this.Agregarbutton);
             this.Name = "NuevoDirector";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NuevoDirector";
             this.ResumeLayout(false);
             this.PerformLayout();

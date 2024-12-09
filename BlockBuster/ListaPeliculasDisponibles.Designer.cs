@@ -35,7 +35,7 @@
             // dataGridViewPeliculas
             // 
             this.dataGridViewPeliculas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPeliculas.Location = new System.Drawing.Point(23, 22);
+            this.dataGridViewPeliculas.Location = new System.Drawing.Point(11, 12);
             this.dataGridViewPeliculas.Name = "dataGridViewPeliculas";
             this.dataGridViewPeliculas.RowHeadersWidth = 51;
             this.dataGridViewPeliculas.RowTemplate.Height = 24;
@@ -46,9 +46,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(763, 344);
             this.Controls.Add(this.dataGridViewPeliculas);
             this.Name = "ListaPeliculasDisponibles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListaPeliculasDisponibles";
             this.Load += new System.EventHandler(this.ListaPeliculasDisponibles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPeliculas)).EndInit();

@@ -51,5 +51,17 @@ namespace BlockBuster
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Agregar_Pelicula form = new Agregar_Pelicula();
+            form.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ListaPeliculasDisponibles form = new ListaPeliculasDisponibles();
+            form.Show();
+        }
     }
 }
