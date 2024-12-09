@@ -16,6 +16,9 @@ namespace BlockBuster
         {
             InitializeComponent();
             CargarDatos();
+
+            this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            RetroButton.backgroundStyle(this);
         }
 
         private void ListaPeliculasDisponibles_Load(object sender, EventArgs e)

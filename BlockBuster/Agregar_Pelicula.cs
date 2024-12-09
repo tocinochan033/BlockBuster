@@ -22,6 +22,12 @@ namespace BlockBuster
         {
             InitializeComponent();
             CargarDatos();
+
+            RetroButton.ApplyStyle(agregarButton, "Agregar Pelicula");
+            RetroButton.ApplyStyle(button1, "Nuevo");
+            RetroButton.ApplyStyle(button2, "Nuevo");
+
+            RetroButton.backgroundStyle(this);
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -15,6 +15,10 @@ namespace BlockBuster
         public NuevoDirector()
         {
             InitializeComponent();
+
+            RetroButton.ApplyStyle(Agregarbutton, "Agregar");
+            RetroButton.backgroundStyle(this);
+            this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
         }
 
         private databaseConnection database = new databaseConnection();

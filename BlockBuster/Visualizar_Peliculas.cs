@@ -18,6 +18,15 @@ namespace BlockBuster
         {
             InitializeComponent();
             CargarDatos();
+
+            this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            
+
+            RetroButton.ApplyStyle(button1, "Agregar Pelicula");
+            RetroButton.ApplyStyle(button2, "Lista Dispinible");
+            RetroButton.ApplyStyle(modificarButton, "Actualizar Pelicula");
+
+            RetroButton.backgroundStyle(this);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -49,6 +58,7 @@ namespace BlockBuster
 
         private void Visualizar_Peliculas_Load(object sender, EventArgs e)
         {
+            this.Font = new Font("MS Sans Serif", 8, FontStyle.Regular);
 
         }
 
@@ -63,5 +73,6 @@ namespace BlockBuster
             ListaPeliculasDisponibles form = new ListaPeliculasDisponibles();
             form.Show();
         }
+
     }
 }

@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RetroButton.cs" />
     <Compile Include="sqlQuery.cs" />
     <Compile Include="Visualizar_Peliculas.cs">
       <SubType>Form</SubType>
@@ -129,6 +130,9 @@
     <EmbeddedResource Include="Visualizar_Peliculas.resx">
       <DependentUpon>Visualizar_Peliculas.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="MS Sans Serif 8pt.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

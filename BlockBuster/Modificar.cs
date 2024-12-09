@@ -18,6 +18,12 @@ namespace BlockBuster
             InitializeComponent();
             CargarDatos();
             cargarEstatus();
+
+            RetroButton.ApplyStyle(button1, "Cambiar Estatus");
+            RetroButton.ApplyStyle(eliminarButton, "Eliminar");
+
+            this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            RetroButton.backgroundStyle(this);
         }
 
         private void Modificar_Load(object sender, EventArgs e)
