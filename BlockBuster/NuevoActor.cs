@@ -17,8 +17,9 @@ namespace BlockBuster
             InitializeComponent();
 
             RetroButton.ApplyStyle(Agregarbutton, "Agregar");
+            RetroButton.ApplyStyle(closeButton, "Salir");
             RetroButton.backgroundStyle(this);
-            this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private databaseConnection database = new databaseConnection();
@@ -53,6 +54,11 @@ namespace BlockBuster
         private void NuevoActor_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

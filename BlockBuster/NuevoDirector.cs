@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BlockBuster
 {
@@ -18,7 +19,7 @@ namespace BlockBuster
 
             RetroButton.ApplyStyle(Agregarbutton, "Agregar");
             RetroButton.backgroundStyle(this);
-            this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private databaseConnection database = new databaseConnection();
@@ -40,14 +41,42 @@ namespace BlockBuster
                     string apellido = apellidoTextBox.Text.ToString();
 
                     query.InsertarDirector(nombre, apellido);
+
+
+                    MessageBox.Show("Registro insertado correctamente.");
+                    datosActualizados?.Invoke();
                 }
                 catch (Exception ex) { MessageBox.Show("Error al registrar director: " + ex.Message); }
                 finally { database.close(); }
 
-                MessageBox.Show("Registro insertado correctamente.");
             }
-            datosActualizados?.Invoke();
+
             this.Close();
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void apellidoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nombreTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

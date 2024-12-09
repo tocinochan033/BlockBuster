@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +22,7 @@ namespace BlockBuster
 
             RetroButton.ApplyStyle(button1, "Cambiar Estatus");
             RetroButton.ApplyStyle(eliminarButton, "Eliminar");
+            RetroButton.ApplyStyle(closeButton, "Salir");
 
             this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
             RetroButton.backgroundStyle(this);
@@ -32,6 +34,8 @@ namespace BlockBuster
         }
 
         sqlQuery query = new sqlQuery();
+        public event Action datosActualizados;
+
         private void CargarDatos()
         {
             try
@@ -42,6 +46,7 @@ namespace BlockBuster
             }
             catch (Exception ex)
             {
+                SystemSounds.Exclamation.Play();
                 MessageBox.Show("Error al cargar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -66,6 +71,7 @@ namespace BlockBuster
 
                     if (string.IsNullOrEmpty(nuevoEstatus))
                     {
+                        SystemSounds.Exclamation.Play();
                         MessageBox.Show("Por favor, selecciona un estatus válido.");
                         return;
                     }
@@ -88,9 +94,12 @@ namespace BlockBuster
                             {
                                 MessageBox.Show("Estatus modificado correctamente.");
                                 CargarDatos(); // Recarga el DataGridView
+
+                                datosActualizados?.Invoke();
                             }
                             else
                             {
+                                SystemSounds.Exclamation.Play();
                                 MessageBox.Show("No se pudo modificar el estatus.");
                             }
                         }
@@ -98,11 +107,13 @@ namespace BlockBuster
                 }
                 catch (Exception ex)
                 {
+                    SystemSounds.Exclamation.Play();
                     MessageBox.Show("Error al modificar el estatus: " + ex.Message);
                 }
             }
             else
             {
+                SystemSounds.Exclamation.Play();
                 MessageBox.Show("Por favor, selecciona una fila para modificar.");
             }
         }
@@ -116,7 +127,9 @@ namespace BlockBuster
                 int idPelicula = Convert.ToInt32(dataGridViewPeliculas.SelectedRows[0].Cells["Identificador"].Value);
 
                 // Confirmar eliminación
+                SystemSounds.Exclamation.Play();
                 var confirmResult = MessageBox.Show("¿Seguro que quieres eliminar este registro?", "Confirmar eliminación", MessageBoxButtons.YesNo);
+                   
                 if (confirmResult == DialogResult.Yes)
                 {
                     try
@@ -149,6 +162,11 @@ namespace BlockBuster
             {
                 MessageBox.Show("Por favor, selecciona una fila para eliminar.");
             }
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

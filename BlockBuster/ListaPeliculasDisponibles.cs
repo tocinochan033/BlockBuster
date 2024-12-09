@@ -17,7 +17,8 @@ namespace BlockBuster
             InitializeComponent();
             CargarDatos();
 
-            this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = FormBorderStyle.None;
+            RetroButton.ApplyStyle(closeButton, "salir");
             RetroButton.backgroundStyle(this);
         }
 
@@ -41,6 +42,11 @@ namespace BlockBuster
             {
                 MessageBox.Show("Error al cargar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

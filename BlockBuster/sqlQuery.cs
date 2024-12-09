@@ -172,13 +172,14 @@ namespace BlockBuster
             try
             {
                 database.open();
-                string query = "INSERT INTO director (nombre, apellido) OUTPUT INSERTED.id_director VALUES (@Nombre, @Apellido)";
+                string query = "INSERT INTO director (nombre, apellido) VALUES (@Nombre, @Apellido); SELECT SCOPE_IDENTITY();";
                 using (SqlCommand command = new SqlCommand(query, database.connectiondb))
                 {
                     command.Parameters.AddWithValue("@Nombre", nombre);
                     command.Parameters.AddWithValue("@Apellido", apellido);
 
-                    idDirector = (int)command.ExecuteScalar(); // Obtiene el ID del director insertado
+                    // Ahora obtiene el ID del director insertado usando SCOPE_IDENTITY()
+                    idDirector = Convert.ToInt32(command.ExecuteScalar());
                 }
 
                 Console.WriteLine("Director insertado correctamente.");
@@ -194,6 +195,8 @@ namespace BlockBuster
 
             return idDirector;
         }
+
+
 
         public int InsertarGenero(string genero)
         {

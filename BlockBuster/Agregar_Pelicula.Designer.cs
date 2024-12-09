@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.closeButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.actorComboBox = new System.Windows.Forms.ComboBox();
@@ -53,6 +54,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.closeButton);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.actorComboBox);
@@ -79,6 +81,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // closeButton
+            // 
+            this.closeButton.Location = new System.Drawing.Point(457, 454);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(83, 36);
+            this.closeButton.TabIndex = 23;
+            this.closeButton.Text = "Salir";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,73 +115,73 @@
             // 
             // actorComboBox
             // 
-            this.actorComboBox.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.actorComboBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.actorComboBox.FormattingEnabled = true;
             this.actorComboBox.Location = new System.Drawing.Point(120, 288);
             this.actorComboBox.Name = "actorComboBox";
-            this.actorComboBox.Size = new System.Drawing.Size(298, 21);
+            this.actorComboBox.Size = new System.Drawing.Size(298, 23);
             this.actorComboBox.TabIndex = 5;
             // 
             // directorComboBox
             // 
-            this.directorComboBox.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directorComboBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.directorComboBox.FormattingEnabled = true;
             this.directorComboBox.Location = new System.Drawing.Point(120, 242);
             this.directorComboBox.Name = "directorComboBox";
-            this.directorComboBox.Size = new System.Drawing.Size(298, 21);
+            this.directorComboBox.Size = new System.Drawing.Size(298, 23);
             this.directorComboBox.TabIndex = 4;
             this.directorComboBox.SelectedIndexChanged += new System.EventHandler(this.directorComboBox_SelectedIndexChanged);
             // 
             // estatusComboBox
             // 
-            this.estatusComboBox.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estatusComboBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estatusComboBox.FormattingEnabled = true;
             this.estatusComboBox.Location = new System.Drawing.Point(324, 374);
             this.estatusComboBox.Name = "estatusComboBox";
-            this.estatusComboBox.Size = new System.Drawing.Size(125, 21);
+            this.estatusComboBox.Size = new System.Drawing.Size(125, 23);
             this.estatusComboBox.TabIndex = 8;
             // 
             // idiomaComboBox
             // 
-            this.idiomaComboBox.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idiomaComboBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idiomaComboBox.FormattingEnabled = true;
             this.idiomaComboBox.Location = new System.Drawing.Point(189, 374);
             this.idiomaComboBox.Name = "idiomaComboBox";
-            this.idiomaComboBox.Size = new System.Drawing.Size(129, 21);
+            this.idiomaComboBox.Size = new System.Drawing.Size(129, 23);
             this.idiomaComboBox.TabIndex = 7;
             // 
             // generoComboBox
             // 
-            this.generoComboBox.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generoComboBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.generoComboBox.FormattingEnabled = true;
             this.generoComboBox.Location = new System.Drawing.Point(54, 374);
             this.generoComboBox.Name = "generoComboBox";
-            this.generoComboBox.Size = new System.Drawing.Size(129, 21);
+            this.generoComboBox.Size = new System.Drawing.Size(129, 23);
             this.generoComboBox.TabIndex = 6;
             this.generoComboBox.SelectedIndexChanged += new System.EventHandler(this.generoComboBox_SelectedIndexChanged);
             // 
             // fechaTextBox
             // 
-            this.fechaTextBox.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fechaTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaTextBox.Location = new System.Drawing.Point(40, 116);
             this.fechaTextBox.Name = "fechaTextBox";
-            this.fechaTextBox.Size = new System.Drawing.Size(82, 20);
+            this.fechaTextBox.Size = new System.Drawing.Size(82, 22);
             this.fechaTextBox.TabIndex = 2;
             // 
             // duracionTextBox
             // 
-            this.duracionTextBox.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.duracionTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.duracionTextBox.Location = new System.Drawing.Point(40, 188);
             this.duracionTextBox.Name = "duracionTextBox";
-            this.duracionTextBox.Size = new System.Drawing.Size(87, 20);
+            this.duracionTextBox.Size = new System.Drawing.Size(87, 22);
             this.duracionTextBox.TabIndex = 3;
             // 
             // nombreTextBox
             // 
-            this.nombreTextBox.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombreTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nombreTextBox.Location = new System.Drawing.Point(36, 43);
             this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(366, 20);
+            this.nombreTextBox.Size = new System.Drawing.Size(366, 22);
             this.nombreTextBox.TabIndex = 1;
             // 
             // label8
@@ -255,7 +267,7 @@
             // agregarButton
             // 
             this.agregarButton.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.agregarButton.Location = new System.Drawing.Point(198, 450);
+            this.agregarButton.Location = new System.Drawing.Point(189, 425);
             this.agregarButton.Name = "agregarButton";
             this.agregarButton.Size = new System.Drawing.Size(116, 40);
             this.agregarButton.TabIndex = 9;
@@ -301,6 +313,7 @@
         private System.Windows.Forms.ComboBox directorComboBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button closeButton;
     }
 }
 

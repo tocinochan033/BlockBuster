@@ -25,9 +25,13 @@ namespace BlockBuster
             RetroButton.ApplyStyle(button1, "Agregar Pelicula");
             RetroButton.ApplyStyle(button2, "Lista Dispinible");
             RetroButton.ApplyStyle(modificarButton, "Actualizar Pelicula");
+            RetroButton.ApplyStyle(closeButton, "Salir");
 
             RetroButton.backgroundStyle(this);
+
+            this.FormBorderStyle = FormBorderStyle.None;
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -35,7 +39,7 @@ namespace BlockBuster
         }
 
         private sqlQuery query = new sqlQuery();
-
+        public event Action datosActualizados;
 
         private void CargarDatos()
         {
@@ -53,6 +57,7 @@ namespace BlockBuster
         private void modificarButton_Click(object sender, EventArgs e)
         {
             Modificar modificar = new Modificar();
+            modificar.datosActualizados += CargarDatos;
             modificar.Show();
         }
 
@@ -65,6 +70,7 @@ namespace BlockBuster
         private void button1_Click(object sender, EventArgs e)
         {
             Agregar_Pelicula form = new Agregar_Pelicula();
+            form.datosActualizados += CargarDatos;
             form.Show();
         }
 
@@ -74,5 +80,9 @@ namespace BlockBuster
             form.Show();
         }
 
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

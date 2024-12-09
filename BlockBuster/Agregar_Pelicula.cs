@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace BlockBuster
         private databaseConnection database = new databaseConnection();
         sqlQuery query = new sqlQuery();
         private IDHelper helper = new IDHelper();
+
         
         public Agregar_Pelicula()
         {
@@ -26,6 +28,9 @@ namespace BlockBuster
             RetroButton.ApplyStyle(agregarButton, "Agregar Pelicula");
             RetroButton.ApplyStyle(button1, "Nuevo");
             RetroButton.ApplyStyle(button2, "Nuevo");
+            RetroButton.ApplyStyle(closeButton, "Salir");
+
+            this.FormBorderStyle = FormBorderStyle.None;
 
             RetroButton.backgroundStyle(this);
         }
@@ -34,69 +39,87 @@ namespace BlockBuster
         {
         }
 
+        public event Action datosActualizados;
         private void agregarButton_Click(object sender, EventArgs e)
         {
-            database.open();
-
-            // Datos del forumulario
-            string nombre = nombreTextBox.Text;
-            int fecha = int.Parse(fechaTextBox.Text);
-            int duracion = int.Parse(duracionTextBox.Text);
-
-            string genero = generoComboBox.SelectedItem.ToString();
-            string idioma = idiomaComboBox.SelectedItem.ToString();
-            string estatus = estatusComboBox.SelectedItem.ToString();
-
-            // Obtener el actor seleccionado
-            string actorSeleccionado = actorComboBox.SelectedItem.ToString();
-            string[] partesActor = actorSeleccionado.Split(' '); // Divide el texto en nombre y apellido
-            string nombreActor = partesActor[0];
-            string apellidoActor = partesActor.Length > 1 ? partesActor[1] : ""; // Maneja el caso de un solo nombre
-
-            // Obtener el director seleccionado
-            string directorSeleccionado = directorComboBox.SelectedItem.ToString();
-            string[] partesDirector = directorSeleccionado.Split(' '); // Divide el texto en nombre y apellido
-            string nombreDirector = partesDirector[0];
-            string apellidoDirector = partesDirector.Length > 1 ? partesDirector[1] : ""; // Maneja el caso de un solo nombre
-
-
-            //Verificar si ya existen los registros y obtener sus IDs
-            int idActor = helper.ObtenerIdPorNombreYApellido(nombreActor, apellidoActor, "actor");
-            if (idActor == -1)
+            try
             {
-                idActor = query.InsertarActor(nombreActor, apellidoActor);
-            }
+                database.open();
 
-            int idDirector = helper.ObtenerIdPorNombreYApellido(nombreDirector, apellidoDirector, "director");
-            if (idDirector == -1)
+                // Datos del formulario
+                string nombre = nombreTextBox.Text;
+                int fecha = int.Parse(fechaTextBox.Text);
+                int duracion = int.Parse(duracionTextBox.Text);
+
+                string genero = generoComboBox.SelectedItem.ToString();
+                string idioma = idiomaComboBox.SelectedItem.ToString();
+                string estatus = estatusComboBox.SelectedItem.ToString();
+
+                // Obtener el actor seleccionado
+                string actorSeleccionado = actorComboBox.SelectedItem.ToString();
+                string[] partesActor = actorSeleccionado.Split(' '); // Divide el texto en nombre y apellido
+                string nombreActor = partesActor[0];
+                string apellidoActor = partesActor.Length > 1 ? partesActor[1] : ""; // Maneja el caso de un solo nombre
+
+                // Obtener el director seleccionado
+                string directorSeleccionado = directorComboBox.SelectedItem.ToString();
+                string[] partesDirector = directorSeleccionado.Split(' '); // Divide el texto en nombre y apellido
+                string nombreDirector = partesDirector[0];
+                string apellidoDirector = partesDirector.Length > 1 ? partesDirector[1] : ""; // Maneja el caso de un solo nombre
+
+
+                // Verificar si ya existen los registros y obtener sus IDs
+                int idActor = helper.ObtenerIdPorNombreYApellido(nombreActor, apellidoActor, "actor");
+                if (idActor == -1)
+                {
+                    idActor = query.InsertarActor(nombreActor, apellidoActor);
+                }
+
+                int idDirector = helper.ObtenerIdPorNombreYApellido(nombreDirector, apellidoDirector, "director");
+                if (idDirector == -1)
+                {
+                    idDirector = query.InsertarDirector(nombreDirector, apellidoDirector);
+                }
+
+                int idGenero = helper.ObtenerIdPorNombre(genero, "genero", "genero");
+                if (idGenero == -1)
+                {
+                    idGenero = query.InsertarGenero(genero);
+                }
+
+                int idIdioma = helper.ObtenerIdPorNombre(idioma, "idioma", "idioma");
+                if (idIdioma == -1)
+                {
+                    idIdioma = query.InsertarIdioma(idioma);
+                }
+
+                int idEstatus = helper.ObtenerIdPorNombre(estatus, "estatus", "estatus");
+                if (idEstatus == -1)
+                {
+                    idEstatus = query.InsertarEstatus(estatus);
+                }
+
+                // Insertar película con las relaciones
+                query.InsertarPelicula(nombre, fecha, duracion, idIdioma, idGenero, idEstatus, idActor, idDirector);
+
+                MessageBox.Show("Película agregada con éxito.",
+                                "Éxito",
+                                MessageBoxButtons.OK);
+
+                datosActualizados?.Invoke(); // Notificar que se actualizaron los datos
+                this.Close();
+            }
+            catch (Exception ex)
             {
-                idDirector = query.InsertarDirector(nombreDirector, apellidoDirector);
+                MessageBox.Show("Ocurrió un error al agregar la película: " + ex.Message,
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
-
-
-            int idGenero = helper.ObtenerIdPorNombre(genero, "genero", "genero");
-            if (idGenero == -1)
+            finally
             {
-                idGenero = query.InsertarGenero(genero); 
+                database.close();
             }
-
-            int idIdioma = helper.ObtenerIdPorNombre(idioma, "idioma", "idioma");
-            if (idIdioma == -1)
-            {
-                idIdioma = query.InsertarIdioma(idioma); 
-            }
-
-            int idEstatus = helper.ObtenerIdPorNombre(estatus, "estatus", "estatus");
-            if (idEstatus == -1)
-            {
-                idEstatus = query.InsertarEstatus(estatus); 
-            }
-
-            // Insertar película con las relaciones
-            query.InsertarPelicula(nombre, fecha, duracion, idIdioma, idGenero, idEstatus, idActor, idDirector);
-
-            database.close();
-            this.Close();
         }
 
         public void LlenarComboBox(ComboBox comboBox, string query, string displayField)
@@ -209,6 +232,11 @@ namespace BlockBuster
             NuevoDirector director = new NuevoDirector();
             director.datosActualizados += actualizarDatos;
             director.ShowDialog();
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
