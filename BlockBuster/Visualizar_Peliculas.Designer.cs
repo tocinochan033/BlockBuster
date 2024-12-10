@@ -40,6 +40,7 @@
             // 
             // modificarButton
             // 
+            this.modificarButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.modificarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.modificarButton.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.modificarButton.Location = new System.Drawing.Point(34, 88);
@@ -52,6 +53,7 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button2.Location = new System.Drawing.Point(34, 150);
@@ -64,6 +66,7 @@
             // 
             // closeButton
             // 
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeButton.Location = new System.Drawing.Point(34, 214);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(222, 36);
@@ -75,7 +78,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BlockBuster.Properties.Resources.blockbuster_video_logo_black_and_white;
-            this.pictureBox1.Location = new System.Drawing.Point(12, -44);
+            this.pictureBox1.Location = new System.Drawing.Point(12, -23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(396, 301);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -84,6 +87,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button1.Location = new System.Drawing.Point(34, 21);
@@ -100,7 +104,7 @@
             this.groupBox1.Controls.Add(this.modificarButton);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.closeButton);
-            this.groupBox1.Location = new System.Drawing.Point(84, 263);
+            this.groupBox1.Location = new System.Drawing.Point(75, 263);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(286, 265);
             this.groupBox1.TabIndex = 26;
@@ -111,8 +115,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(433, 540);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "Visualizar_Peliculas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualizar_Peliculas";

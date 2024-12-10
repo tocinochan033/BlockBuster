@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BlockBuster
 {
@@ -135,6 +136,19 @@ namespace BlockBuster
             return dataTable;
         }
 
+        public string search()
+        {
+            string query = @"
+                   SELECT p.titulo AS Titulo, p.fecha AS Fecha, i.idioma AS Idioma, e.estatus AS Estatus
+                   FROM pelicula p
+                        INNER JOIN idioma i ON p.id_idioma = i.id_idioma
+                        INNER JOIN estatus e ON p.id_estatus = e.id_estatus
+                        INNER JOIN director d ON p.id_director = d.id_director
+                        WHERE p.titulo = @Titulo";
+
+            return query;
+        }
+
         public int InsertarActor(string nombre, string apellido)
         {
             int idActor = 0;
@@ -172,7 +186,7 @@ namespace BlockBuster
             try
             {
                 database.open();
-                string query = "INSERT INTO director (nombre, apellido) VALUES (@Nombre, @Apellido); SELECT SCOPE_IDENTITY();";
+                string query = "INSERT INTO director (nombre, apellido) OUTPUT INSERTED.id_director VALUES (@Nombre, @Apellido);";
                 using (SqlCommand command = new SqlCommand(query, database.connectiondb))
                 {
                     command.Parameters.AddWithValue("@Nombre", nombre);
@@ -318,5 +332,40 @@ namespace BlockBuster
                 database.close();
             }
         }
+
+        public List<(int Id, string NombreCompleto)> BuscarActorPorNombre(string textoBusqueda)
+        {
+            List<(int, string)> resultados = new List<(int, string)>();
+
+            try
+            {
+                database.open();
+                string query = "SELECT id_actor, CONCAT(nombre, ' ', apellido) AS NombreCompleto FROM actor " +
+                               "WHERE nombre LIKE @Busqueda OR apellido LIKE @Busqueda";
+                using (SqlCommand command = new SqlCommand(query, database.connectiondb))
+                {
+                    command.Parameters.AddWithValue("@Busqueda", "%" + textoBusqueda + "%");
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(0);
+                        string nombreCompleto = reader.GetString(1);
+                        resultados.Add((id, nombreCompleto));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar actores: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                database.close();
+            }
+
+            return resultados;
+        }
+
     }
 }

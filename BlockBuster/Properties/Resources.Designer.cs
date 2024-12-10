@@ -69,5 +69,25 @@ namespace BlockBuster.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap e7d450d8c31ae10aa663d082fdbb3db9 {
+            get {
+                object obj = ResourceManager.GetObject("e7d450d8c31ae10aa663d082fdbb3db9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_search_8 {
+            get {
+                object obj = ResourceManager.GetObject("file-search-8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

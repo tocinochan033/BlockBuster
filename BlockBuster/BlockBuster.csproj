@@ -96,6 +96,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RetroButton.cs" />
+    <Compile Include="SearchActor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchActor.Designer.cs">
+      <DependentUpon>SearchActor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchDirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchDirector.Designer.cs">
+      <DependentUpon>SearchDirector.cs</DependentUpon>
+    </Compile>
     <Compile Include="sqlQuery.cs" />
     <Compile Include="Visualizar_Peliculas.cs">
       <SubType>Form</SubType>
@@ -103,6 +115,8 @@
     <Compile Include="Visualizar_Peliculas.Designer.cs">
       <DependentUpon>Visualizar_Peliculas.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\e7d450d8c31ae10aa663d082fdbb3db9.png" />
+    <None Include="Resources\file-search-8.png" />
     <None Include="Resources\blockbuster-video-logo-black-and-white.png" />
     <EmbeddedResource Include="Agregar_Pelicula.resx">
       <DependentUpon>Agregar_Pelicula.cs</DependentUpon>
@@ -129,6 +143,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SearchActor.resx">
+      <DependentUpon>SearchActor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchDirector.resx">
+      <DependentUpon>SearchDirector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Visualizar_Peliculas.resx">
       <DependentUpon>Visualizar_Peliculas.cs</DependentUpon>
     </EmbeddedResource>

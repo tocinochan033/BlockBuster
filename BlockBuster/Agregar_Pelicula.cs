@@ -55,8 +55,9 @@ namespace BlockBuster
                 string idioma = idiomaComboBox.SelectedItem.ToString();
                 string estatus = estatusComboBox.SelectedItem.ToString();
 
+
                 // Obtener el actor seleccionado
-                string actorSeleccionado = actorComboBox.SelectedItem.ToString().ToUpper();
+                string actorSeleccionado = actorComboBox.SelectedItem.ToString();
                 string[] partesActor = actorSeleccionado.Split(' '); // Divide el texto en nombre y apellido
                 string nombreActor = partesActor[0];
                 string apellidoActor = partesActor.Length > 1 ? partesActor[1] : ""; // Maneja el caso de un solo nombre
@@ -223,20 +224,62 @@ namespace BlockBuster
         private void button2_Click(object sender, EventArgs e)
         {
             NuevoActor actor = new NuevoActor();
-            actor.datosActualizados += actualizarDatos;
+            actor.datosActualizados += CargarDatos;
             actor.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             NuevoDirector director = new NuevoDirector();
-            director.datosActualizados += actualizarDatos;
+            director.datosActualizados += CargarDatos;
             director.ShowDialog();
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario SearchActor
+            SearchActor searchActorForm = new SearchActor();
+
+            // Suscribirse al evento ActorSeleccionado
+            searchActorForm.ActorSeleccionado += (actorSeleccionado) =>
+            {
+                // Agregar el actor seleccionado al ComboBox
+                if (!actorComboBox.Items.Contains(actorSeleccionado))
+                {
+                    actorComboBox.Items.Add(actorSeleccionado);
+                }
+
+                // Selecciona automáticamente el actor en el ComboBox
+                actorComboBox.SelectedItem = actorSeleccionado;
+            };
+
+            // Mostrar el formulario de búsqueda
+            searchActorForm.ShowDialog();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            SearchDirector searchDirectorForm = new SearchDirector();
+
+            // Suscribirse al evento ActorSeleccionado
+            searchDirectorForm.ActorSeleccionado += (actorSeleccionado) =>
+            {
+                // Agregar el actor seleccionado al ComboBox
+                if (!directorComboBox.Items.Contains(actorSeleccionado))
+                {
+                    directorComboBox.Items.Add(actorSeleccionado);
+                }
+
+                // Selecciona automáticamente el actor en el ComboBox
+                directorComboBox.SelectedItem = actorSeleccionado;
+            };
+
+            searchDirectorForm.ShowDialog();
         }
     }
 }

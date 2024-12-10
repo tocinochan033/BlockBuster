@@ -17,8 +17,6 @@ namespace BlockBuster
         public Modificar()
         {
             InitializeComponent();
-            CargarDatos();
-            cargarEstatus();
 
             RetroButton.ApplyStyle(button1, "Cambiar Estatus");
             RetroButton.ApplyStyle(eliminarButton, "Eliminar");
@@ -33,23 +31,9 @@ namespace BlockBuster
 
         }
 
-        sqlQuery query = new sqlQuery();
+        private sqlQuery query = new sqlQuery();
+        private databaseConnection database =  new databaseConnection(); 
         public event Action datosActualizados;
-
-        private void CargarDatos()
-        {
-            try
-            {
-                dataGridViewPeliculas.DataSource = query.ObtenerPeliculasMenor();
-                dataGridViewPeliculas.Columns["Identificador"].Visible = false;
-
-            }
-            catch (Exception ex)
-            {
-                SystemSounds.Exclamation.Play();
-                MessageBox.Show("Error al cargar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         Agregar_Pelicula estatus = new Agregar_Pelicula();
         private void cargarEstatus()
@@ -59,114 +43,194 @@ namespace BlockBuster
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridViewPeliculas.SelectedRows.Count > 0)
+            // Validar que el título no esté vacío
+            if (string.IsNullOrWhiteSpace(nombreTextBox.Text))
             {
-                try
+                MessageBox.Show("Por favor, selecciona una película antes de cambiar el estatus.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar que se haya seleccionado un nuevo estatus
+            if (estatusComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, selecciona un estatus válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Obtener los valores del formulario
+            string titulo = nombreTextBox.Text.Trim();
+            string nuevoEstatus = estatusComboBox.SelectedItem.ToString();
+
+            try
+            {
+                database.open();
+
+                // Consulta para actualizar el estatus de la película
+                string query = @"
+                    UPDATE pelicula
+                    SET id_estatus = (SELECT id_estatus FROM estatus WHERE estatus = @NuevoEstatus)
+                    WHERE titulo = @Titulo";
+
+                using (SqlCommand command = new SqlCommand(query, database.connectiondb))
                 {
-                    // Obtén el ID de la película seleccionada
-                    int idPelicula = Convert.ToInt32(dataGridViewPeliculas.SelectedRows[0].Cells["Identificador"].Value);
+                    command.Parameters.AddWithValue("@NuevoEstatus", nuevoEstatus);
+                    command.Parameters.AddWithValue("@Titulo", titulo);
 
-                    // Obtén el nuevo estatus seleccionado del ComboBox
-                    string nuevoEstatus = estatusComboBox.SelectedItem?.ToString();
+                    int filasAfectadas = command.ExecuteNonQuery();
 
-                    if (string.IsNullOrEmpty(nuevoEstatus))
+                    if (filasAfectadas > 0)
                     {
-                        SystemSounds.Exclamation.Play();
-                        MessageBox.Show("Por favor, selecciona un estatus válido.");
-                        return;
+                        MessageBox.Show("Estatus actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        estatusTextBox.Text = nuevoEstatus; // Actualiza el TextBox de estatus
                     }
-
-                    // Actualizar el estatus en la base de datos
-                    using (SqlConnection connection = new SqlConnection("Data Source= MARTIN\\SQLEXPRESS; Initial Catalog= COCKBUSTERS; Integrated Security=True"))
+                    else
                     {
-                        connection.Open();
-                        string query = @"
-                        UPDATE pelicula 
-                        SET id_estatus = (SELECT TOP 1 id_estatus FROM estatus WHERE estatus = @NuevoEstatus) 
-                        WHERE id_pelicula = @IdPelicula";
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@NuevoEstatus", nuevoEstatus);
-                            command.Parameters.AddWithValue("@IdPelicula", idPelicula);
-
-                            int filasAfectadas = command.ExecuteNonQuery();
-                            if (filasAfectadas > 0)
-                            {
-                                MessageBox.Show("Estatus modificado correctamente.");
-                                CargarDatos(); // Recarga el DataGridView
-
-                                datosActualizados?.Invoke();
-                            }
-                            else
-                            {
-                                SystemSounds.Exclamation.Play();
-                                MessageBox.Show("No se pudo modificar el estatus.");
-                            }
-                        }
+                        MessageBox.Show("No se encontró la película especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                catch (Exception ex)
-                {
-                    SystemSounds.Exclamation.Play();
-                    MessageBox.Show("Error al modificar el estatus: " + ex.Message);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                SystemSounds.Exclamation.Play();
-                MessageBox.Show("Por favor, selecciona una fila para modificar.");
+                MessageBox.Show("Ocurrió un error al actualizar el estatus: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                database.close();
             }
         }
 
         private void eliminarButton_Click(object sender, EventArgs e)
         {
-            // Verifica si hay una fila seleccionada
-            if (dataGridViewPeliculas.SelectedRows.Count > 0)
+            // Validar que el título no esté vacío
+            if (string.IsNullOrWhiteSpace(nombreTextBox.Text))
             {
-                // Obtén el ID de la fila seleccionada (supongamos que la columna del ID es la primera columna)
-                int idPelicula = Convert.ToInt32(dataGridViewPeliculas.SelectedRows[0].Cells["Identificador"].Value);
+                MessageBox.Show("Por favor, selecciona una película antes de eliminarla.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                // Confirmar eliminación
-                SystemSounds.Exclamation.Play();
-                var confirmResult = MessageBox.Show("¿Seguro que quieres eliminar este registro?", "Confirmar eliminación", MessageBoxButtons.YesNo);
-                   
-                if (confirmResult == DialogResult.Yes)
+            // Confirmación de eliminación
+            DialogResult confirmacion = MessageBox.Show(
+                "¿Estás seguro de que deseas eliminar esta película? Esta acción no se puede deshacer.",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirmacion == DialogResult.No)
+            {
+                return; // Si el usuario selecciona "No", no se realiza ninguna acción
+            }
+
+            // Obtener el título de la película
+            string titulo = nombreTextBox.Text.Trim();
+
+            try
+            {
+                database.open();
+
+                // Consulta para eliminar la película
+                string query = "DELETE FROM pelicula WHERE titulo = @Titulo";
+
+                using (SqlCommand command = new SqlCommand(query, database.connectiondb))
                 {
-                    try
+                    command.Parameters.AddWithValue("@Titulo", titulo);
+
+                    int filasAfectadas = command.ExecuteNonQuery();
+
+                    if (filasAfectadas > 0)
                     {
-                        // Conexión a la base de datos y eliminación del registro
-                        using (SqlConnection connection = new SqlConnection("Data Source= MARTIN\\SQLEXPRESS; Initial Catalog= COCKBUSTERS; Integrated Security=True"))
-                        {
-                            connection.Open();
-                            string query = "DELETE FROM pelicula WHERE id_pelicula = @IdPelicula";
-                            using (SqlCommand command = new SqlCommand(query, connection))
-                            {
-                                command.Parameters.AddWithValue("@IdPelicula", idPelicula);
-                                command.ExecuteNonQuery();
-                            }
-                        }
-
-                        // Mensaje de éxito
-                        MessageBox.Show("Registro eliminado correctamente.");
-
-                        // Recarga los datos del DataGridView
-                        CargarDatos();
+                        MessageBox.Show("Película eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimpiarCampos(); // Limpia los TextBox y demás controles del formulario
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Error al eliminar el registro: " + ex.Message);
+                        MessageBox.Show("No se encontró la película especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Por favor, selecciona una fila para eliminar.");
+                MessageBox.Show("Ocurrió un error al eliminar la película: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                database.close();
+            }
+        }
+
+        private void LimpiarCampos()
+        {
+            nombreTextBox.Text = "";
+            estatusTextBox.Text = "";
+            idiomaTextBox.Text = "";
+            estatusComboBox.SelectedIndex = -1;
+            searchTextBox.Text = "";
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            // Validar que el campo de búsqueda no esté vacío
+            if (string.IsNullOrWhiteSpace(searchTextBox.Text))
+            {
+                MessageBox.Show("Por favor, ingresa el título de la película que deseas buscar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Obtener el título de la película a buscar
+            string titulo = searchTextBox.Text.Trim();
+
+            cargarEstatus();
+
+            try
+            {
+                database.open();
+
+                // Consulta para obtener los datos de la película
+                ////string query = @"
+                ////   SELECT p.titulo AS Titulo, p.fecha AS Fecha, i.idioma AS Idioma, e.estatus AS Estatus
+                ////   FROM pelicula p
+                ////        INNER JOIN idioma i ON p.id_idioma = i.id_idioma
+                ////        INNER JOIN estatus e ON p.id_estatus = e.id_estatus
+                ////        INNER JOIN director d ON p.id_director = d.id_director
+                ////        WHERE p.titulo = @Titulo";
+                ///
+
+                string new_query = query.search();
+
+                using (SqlCommand command = new SqlCommand(new_query, database.connectiondb))
+                {
+                    command.Parameters.AddWithValue("@Titulo", titulo);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Cargar los datos en los TextBox correspondientes
+                            nombreTextBox.Text = reader["Titulo"].ToString();
+                            estatusTextBox.Text = reader["Estatus"].ToString();
+                            idiomaTextBox.Text = reader["Idioma"].ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró ninguna película con ese título.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                database.close();
+            }
         }
     }
 }
