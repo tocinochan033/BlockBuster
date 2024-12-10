@@ -23,7 +23,7 @@ namespace BlockBuster
             
 
             RetroButton.ApplyStyle(button1, "Agregar Pelicula");
-            RetroButton.ApplyStyle(button2, "Lista Dispinible");
+            RetroButton.ApplyStyle(button2, "Lista Disponible");
             RetroButton.ApplyStyle(modificarButton, "Actualizar Pelicula");
             RetroButton.ApplyStyle(closeButton, "Salir");
 
@@ -45,7 +45,7 @@ namespace BlockBuster
         {
             try
             {
-                dataGridViewPeliculas.DataSource = query.ObtenerPeliculasAmplio();
+                //dataGridViewPeliculas.DataSource = query.ObtenerPeliculasAmplio();
 
             }
             catch (Exception ex)

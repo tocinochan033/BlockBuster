@@ -56,7 +56,7 @@ namespace BlockBuster
                 string estatus = estatusComboBox.SelectedItem.ToString();
 
                 // Obtener el actor seleccionado
-                string actorSeleccionado = actorComboBox.SelectedItem.ToString();
+                string actorSeleccionado = actorComboBox.SelectedItem.ToString().ToUpper();
                 string[] partesActor = actorSeleccionado.Split(' '); // Divide el texto en nombre y apellido
                 string nombreActor = partesActor[0];
                 string apellidoActor = partesActor.Length > 1 ? partesActor[1] : ""; // Maneja el caso de un solo nombre

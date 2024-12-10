@@ -24,7 +24,7 @@ namespace BlockBuster
             RetroButton.ApplyStyle(eliminarButton, "Eliminar");
             RetroButton.ApplyStyle(closeButton, "Salir");
 
-            this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = FormBorderStyle.None;
             RetroButton.backgroundStyle(this);
         }
 

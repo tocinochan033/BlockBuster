@@ -103,6 +103,7 @@
     <Compile Include="Visualizar_Peliculas.Designer.cs">
       <DependentUpon>Visualizar_Peliculas.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\blockbuster-video-logo-black-and-white.png" />
     <EmbeddedResource Include="Agregar_Pelicula.resx">
       <DependentUpon>Agregar_Pelicula.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +127,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Visualizar_Peliculas.resx">
       <DependentUpon>Visualizar_Peliculas.cs</DependentUpon>

@@ -37,8 +37,8 @@ namespace BlockBuster
                 {
                     database.open();
 
-                    string nombre = nombreTextBox.Text.ToString();
-                    string apellido = apellidoTextBox.Text.ToString();
+                    string nombre = nombreTextBox.Text.ToString().ToUpper();
+                    string apellido = apellidoTextBox.Text.ToString().ToUpper();
 
                     query.InsertarActor(nombre, apellido);
                 }

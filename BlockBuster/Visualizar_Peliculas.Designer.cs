@@ -28,30 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewPeliculas = new System.Windows.Forms.DataGridView();
             this.modificarButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPeliculas)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dataGridViewPeliculas
-            // 
-            this.dataGridViewPeliculas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPeliculas.Location = new System.Drawing.Point(12, 58);
-            this.dataGridViewPeliculas.Name = "dataGridViewPeliculas";
-            this.dataGridViewPeliculas.RowHeadersWidth = 51;
-            this.dataGridViewPeliculas.RowTemplate.Height = 24;
-            this.dataGridViewPeliculas.Size = new System.Drawing.Size(1131, 328);
-            this.dataGridViewPeliculas.TabIndex = 0;
-            this.dataGridViewPeliculas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // modificarButton
             // 
             this.modificarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.modificarButton.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.modificarButton.Location = new System.Drawing.Point(348, 12);
+            this.modificarButton.Location = new System.Drawing.Point(34, 88);
             this.modificarButton.Name = "modificarButton";
             this.modificarButton.Size = new System.Drawing.Size(222, 40);
             this.modificarButton.TabIndex = 21;
@@ -59,23 +50,11 @@
             this.modificarButton.UseVisualStyleBackColor = true;
             this.modificarButton.Click += new System.EventHandler(this.modificarButton_Click);
             // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(120, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(222, 40);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Agregar Pelicula";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Location = new System.Drawing.Point(576, 12);
+            this.button2.Location = new System.Drawing.Point(34, 150);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(222, 40);
             this.button2.TabIndex = 23;
@@ -85,39 +64,71 @@
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(1060, 14);
+            this.closeButton.Location = new System.Drawing.Point(34, 214);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(83, 36);
+            this.closeButton.Size = new System.Drawing.Size(222, 36);
             this.closeButton.TabIndex = 24;
             this.closeButton.Text = "Salir";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::BlockBuster.Properties.Resources.blockbuster_video_logo_black_and_white;
+            this.pictureBox1.Location = new System.Drawing.Point(12, -44);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(396, 301);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.Location = new System.Drawing.Point(34, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(222, 40);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Agregar Pelicula";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.modificarButton);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.closeButton);
+            this.groupBox1.Location = new System.Drawing.Point(84, 263);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(286, 265);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            // 
             // Visualizar_Peliculas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 399);
-            this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.modificarButton);
-            this.Controls.Add(this.dataGridViewPeliculas);
+            this.ClientSize = new System.Drawing.Size(433, 540);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.groupBox1);
             this.Name = "Visualizar_Peliculas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualizar_Peliculas";
             this.Load += new System.EventHandler(this.Visualizar_Peliculas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPeliculas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridViewPeliculas;
         private System.Windows.Forms.Button modificarButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
