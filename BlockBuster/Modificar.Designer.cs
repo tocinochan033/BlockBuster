@@ -35,15 +35,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.nombreTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.estatusTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.searchButton = new System.Windows.Forms.Button();
             this.idiomaTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.estatusTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nombreTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.searchCombobox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +69,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(41, 67);
             this.button1.Name = "button1";
@@ -80,6 +81,7 @@
             // 
             // eliminarButton
             // 
+            this.eliminarButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.eliminarButton.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eliminarButton.Location = new System.Drawing.Point(41, 190);
             this.eliminarButton.Name = "eliminarButton";
@@ -102,6 +104,7 @@
             // 
             // closeButton
             // 
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeButton.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeButton.Location = new System.Drawing.Point(28, 310);
             this.closeButton.Name = "closeButton";
@@ -125,23 +128,23 @@
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             // 
-            // nombreTextBox
+            // idiomaTextBox
             // 
-            this.nombreTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombreTextBox.Location = new System.Drawing.Point(21, 49);
-            this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(231, 22);
-            this.nombreTextBox.TabIndex = 6;
+            this.idiomaTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idiomaTextBox.Location = new System.Drawing.Point(21, 181);
+            this.idiomaTextBox.Name = "idiomaTextBox";
+            this.idiomaTextBox.Size = new System.Drawing.Size(162, 22);
+            this.idiomaTextBox.TabIndex = 23;
             // 
-            // label2
+            // label4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 18);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Titulo";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(18, 160);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 18);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Idioma";
             // 
             // estatusTextBox
             // 
@@ -161,6 +164,24 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "Estatus";
             // 
+            // nombreTextBox
+            // 
+            this.nombreTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombreTextBox.Location = new System.Drawing.Point(21, 49);
+            this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.Size = new System.Drawing.Size(231, 22);
+            this.nombreTextBox.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(17, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 18);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Titulo";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label1);
@@ -173,16 +194,9 @@
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTextBox.Location = new System.Drawing.Point(28, 29);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(320, 22);
-            this.searchTextBox.TabIndex = 30;
-            // 
             // searchButton
             // 
+            this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchButton.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchButton.Location = new System.Drawing.Point(363, 22);
             this.searchButton.Name = "searchButton";
@@ -192,30 +206,20 @@
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // idiomaTextBox
+            // searchCombobox
             // 
-            this.idiomaTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idiomaTextBox.Location = new System.Drawing.Point(21, 181);
-            this.idiomaTextBox.Name = "idiomaTextBox";
-            this.idiomaTextBox.Size = new System.Drawing.Size(162, 22);
-            this.idiomaTextBox.TabIndex = 23;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(18, 160);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 18);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "Idioma";
+            this.searchCombobox.FormattingEnabled = true;
+            this.searchCombobox.Location = new System.Drawing.Point(37, 29);
+            this.searchCombobox.Name = "searchCombobox";
+            this.searchCombobox.Size = new System.Drawing.Size(320, 24);
+            this.searchCombobox.TabIndex = 31;
             // 
             // Modificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(539, 358);
-            this.Controls.Add(this.searchTextBox);
+            this.Controls.Add(this.searchCombobox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.closeButton);
@@ -230,7 +234,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -247,9 +250,9 @@
         private System.Windows.Forms.TextBox estatusTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox idiomaTextBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox searchCombobox;
     }
 }

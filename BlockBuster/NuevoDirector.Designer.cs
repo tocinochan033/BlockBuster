@@ -56,6 +56,7 @@
             // 
             // Agregarbutton
             // 
+            this.Agregarbutton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Agregarbutton.Font = new System.Drawing.Font("MS UI Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Agregarbutton.Location = new System.Drawing.Point(51, 130);
             this.Agregarbutton.Name = "Agregarbutton";
@@ -89,6 +90,7 @@
             // 
             // closeButton
             // 
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeButton.Location = new System.Drawing.Point(234, 176);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(83, 36);

@@ -29,6 +29,7 @@ namespace BlockBuster
             RetroButton.ApplyStyle(button1, "Nuevo");
             RetroButton.ApplyStyle(button2, "Nuevo");
             RetroButton.ApplyStyle(closeButton, "Salir");
+            RetroButton.ApplyStyle(refreshButton, "Refrescar");
 
             this.FormBorderStyle = FormBorderStyle.None;
 
@@ -280,6 +281,11 @@ namespace BlockBuster
             };
 
             searchDirectorForm.ShowDialog();
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
         }
     }
 }

@@ -30,7 +30,6 @@
         {
             this.closeButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
             this.fechaTextBox = new System.Windows.Forms.TextBox();
             this.duracionTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
@@ -54,6 +53,7 @@
             // 
             // closeButton
             // 
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeButton.Location = new System.Drawing.Point(668, 294);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(83, 36);
@@ -64,6 +64,7 @@
             // 
             // searchButton
             // 
+            this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchButton.Location = new System.Drawing.Point(369, 12);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(83, 36);
@@ -71,14 +72,6 @@
             this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTextBox.Location = new System.Drawing.Point(34, 19);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(320, 22);
-            this.searchTextBox.TabIndex = 3;
             // 
             // fechaTextBox
             // 
@@ -159,7 +152,7 @@
             this.actorTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.actorTextBox.Location = new System.Drawing.Point(178, 189);
             this.actorTextBox.Name = "actorTextBox";
-            this.actorTextBox.Size = new System.Drawing.Size(162, 22);
+            this.actorTextBox.Size = new System.Drawing.Size(208, 22);
             this.actorTextBox.TabIndex = 12;
             // 
             // directorTextBox
@@ -167,7 +160,7 @@
             this.directorTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.directorTextBox.Location = new System.Drawing.Point(178, 117);
             this.directorTextBox.Name = "directorTextBox";
-            this.directorTextBox.Size = new System.Drawing.Size(162, 22);
+            this.directorTextBox.Size = new System.Drawing.Size(208, 22);
             this.directorTextBox.TabIndex = 13;
             // 
             // label4
@@ -251,7 +244,7 @@
             // searchCombobox
             // 
             this.searchCombobox.FormattingEnabled = true;
-            this.searchCombobox.Location = new System.Drawing.Point(458, 24);
+            this.searchCombobox.Location = new System.Drawing.Point(24, 19);
             this.searchCombobox.Name = "searchCombobox";
             this.searchCombobox.Size = new System.Drawing.Size(320, 24);
             this.searchCombobox.TabIndex = 21;
@@ -263,7 +256,6 @@
             this.ClientSize = new System.Drawing.Size(763, 342);
             this.Controls.Add(this.searchCombobox);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.closeButton);
             this.Name = "ListaPeliculasDisponibles";
@@ -273,14 +265,12 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.TextBox fechaTextBox;
         private System.Windows.Forms.TextBox duracionTextBox;
         private System.Windows.Forms.TextBox nombreTextBox;

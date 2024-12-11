@@ -17,6 +17,7 @@ namespace BlockBuster
         public Modificar()
         {
             InitializeComponent();
+            cargarDatos(); 
 
             RetroButton.ApplyStyle(button1, "Cambiar Estatus");
             RetroButton.ApplyStyle(eliminarButton, "Eliminar");
@@ -24,6 +25,17 @@ namespace BlockBuster
 
             this.FormBorderStyle = FormBorderStyle.None;
             RetroButton.backgroundStyle(this);
+
+            searchCombobox.DropDownStyle = ComboBoxStyle.DropDown;
+            searchCombobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            searchCombobox.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+
+        
+
+        void cargarDatos()
+        {
+            agregar.LlenarComboBox(searchCombobox, "SELECT titulo FROM pelicula", "titulo");
         }
 
         private void Modificar_Load(object sender, EventArgs e)
@@ -32,7 +44,8 @@ namespace BlockBuster
         }
 
         private sqlQuery query = new sqlQuery();
-        private databaseConnection database =  new databaseConnection(); 
+        private databaseConnection database =  new databaseConnection();
+        private Agregar_Pelicula agregar = new Agregar_Pelicula();
         public event Action datosActualizados;
 
         Agregar_Pelicula estatus = new Agregar_Pelicula();
@@ -82,6 +95,7 @@ namespace BlockBuster
                     {
                         MessageBox.Show("Estatus actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         estatusTextBox.Text = nuevoEstatus; // Actualiza el TextBox de estatus
+                        estatusComboBox.SelectedIndex = -1;
                     }
                     else
                     {
@@ -110,7 +124,7 @@ namespace BlockBuster
 
             // Confirmación de eliminación
             DialogResult confirmacion = MessageBox.Show(
-                "¿Estás seguro de que deseas eliminar esta película? Esta acción no se puede deshacer.",
+                $"¿Estás seguro de que deseas eliminar {nombreTextBox.Text} permanentemente? Permanentemente es mucho tiempo." ,
                 "Confirmar eliminación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
@@ -140,6 +154,7 @@ namespace BlockBuster
                     if (filasAfectadas > 0)
                     {
                         MessageBox.Show("Película eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cargarDatos();
                         LimpiarCampos(); // Limpia los TextBox y demás controles del formulario
                     }
                     else
@@ -164,7 +179,7 @@ namespace BlockBuster
             estatusTextBox.Text = "";
             idiomaTextBox.Text = "";
             estatusComboBox.SelectedIndex = -1;
-            searchTextBox.Text = "";
+            searchCombobox.SelectedIndex = -1;
         }
 
         private void closeButton_Click(object sender, EventArgs e)
@@ -174,15 +189,16 @@ namespace BlockBuster
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            string pelicula = searchCombobox.Text;
             // Validar que el campo de búsqueda no esté vacío
-            if (string.IsNullOrWhiteSpace(searchTextBox.Text))
+            if (string.IsNullOrWhiteSpace(pelicula))
             {
                 MessageBox.Show("Por favor, ingresa el título de la película que deseas buscar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Obtener el título de la película a buscar
-            string titulo = searchTextBox.Text.Trim();
+            string titulo = pelicula.Trim();
 
             cargarEstatus();
 

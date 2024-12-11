@@ -17,6 +17,12 @@ namespace BlockBuster
         {
             InitializeComponent();
 
+            searchCombobox.DropDownStyle = ComboBoxStyle.DropDown;
+            searchCombobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            searchCombobox.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+
+
             this.FormBorderStyle = FormBorderStyle.None;
             RetroButton.ApplyStyle(closeButton, "salir");
             RetroButton.ApplyStyle(searchButton, "Buscar");
@@ -47,15 +53,17 @@ namespace BlockBuster
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+
+            string peliculaBuscada = searchCombobox.Text;
             // Validar que el campo de búsqueda no esté vacío
-            if (string.IsNullOrWhiteSpace(searchTextBox.Text))
+            if (string.IsNullOrWhiteSpace(peliculaBuscada))
             {
                 MessageBox.Show("Por favor, ingresa el título de la película que deseas buscar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Obtener el título de la película a buscar
-            string titulo = searchTextBox.Text.Trim();
+            string titulo = peliculaBuscada.Trim();
 
             try
             {
